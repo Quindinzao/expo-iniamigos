@@ -1,18 +1,12 @@
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/types";
 import styles from "./styles";
 import CardOption from "../../components/CardOption";
 import Typography from "../../components/Typography";
+import { modes } from "../../constants/modes";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
-
-const modes = [
-  { label: "Vale tudo", icon: "🔥", value: "valeTudo" },
-  { label: "Para se conhecer", icon: "👥", value: "conhecer" },
-  { label: "Para a\ngalera", icon: "🍿", value: "galera" },
-  { label: "Eu nunca", icon: "❌", value: "euNunca" },
-];
 
 export default function HomeScreen({ navigation }: Props) {
   function goToGame(mode: string) {

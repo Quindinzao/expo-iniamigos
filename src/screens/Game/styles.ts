@@ -6,4 +6,9 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  title: {
+    width: "100%",
+    textAlign: "center",
+    marginBottom: 12,
+  }
 });

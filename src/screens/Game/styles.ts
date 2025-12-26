@@ -6,8 +6,4 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  modeText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
 });

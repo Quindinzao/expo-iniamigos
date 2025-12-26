@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/types";
+import Card from "../../components/Card";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Game">;
 
@@ -10,6 +11,7 @@ export default function GameScreen({ route }: Props) {
   return (
     <View>
       <Text>Modo selecionado: {mode}</Text>
+      <Card label={"Sim"} value={"Sim"} />
     </View>
   );
 }

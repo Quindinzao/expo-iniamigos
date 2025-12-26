@@ -2,8 +2,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./types";
 
-import HomeScreen from "../screens/Home/HomeScreen";
-import GameScreen from "../screens/Game/GameScreen";
+import HomeScreen from "../screens/Home";
+import GameScreen from "../screens/Game";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

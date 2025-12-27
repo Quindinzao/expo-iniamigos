@@ -10,5 +10,5 @@ export const styles = StyleSheet.create({
     width: "100%",
     textAlign: "center",
     marginBottom: 12,
-  }
+  },
 });

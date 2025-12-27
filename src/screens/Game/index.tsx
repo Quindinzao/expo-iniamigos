@@ -1,24 +1,47 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/types";
+import { gameModes } from "../../constants";
 import Card from "../../components/Card";
-import { styles } from "./styles";
 import Typography from "../../components/Typography";
+import { styles } from "./styles";
+import { useEffect, useState } from "react";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Game">;
 
 export default function GameScreen({ route }: Props) {
   const { mode } = route.params;
 
+  const cards = gameModes[mode];
+
+  const [currentCard, setCurrentCard] = useState<string>("");
+
+  function getRandomCard(list: string[]) {
+    const index = Math.floor(Math.random() * list.length);
+    return list[index];
+  }
+
+  function handleSwipe() {
+    setCurrentCard(getRandomCard(cards));
+  }
+
+  useEffect(() => {
+    setCurrentCard(getRandomCard(cards));
+  }, [mode]);
+
+  if (!currentCard) return null;
+
   return (
     <View style={styles.container}>
-      <Typography 
-        font="title"
-        style={styles.title}
-      >
+      <Typography font="title" style={styles.title}>
         INIAMIGOS
       </Typography>
-      <Card label={"Sim"} value={"Sim"} />
+
+      <Card
+        label={currentCard}
+        value={currentCard}
+        onSwipe={handleSwipe}
+      />
     </View>
   );
 }

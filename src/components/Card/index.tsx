@@ -56,31 +56,32 @@ export default function Card({ label, value, onSwipe }: CardProps) {
   });
 
   return (
-    <Animated.View
-      {...panResponder.panHandlers}
-      style={[
-        styles.wrapper,
-        {
+    <View style={styles.wrapper}>
+      <View style={[styles.aux, styles.card1]} />
+      <View style={[styles.aux, styles.card2]} />
+
+      <Animated.View
+        {...panResponder.panHandlers}
+        style={[
+          styles.aux, 
+          styles.card3, {
           transform: [
             { translateX: position.x },
             { translateY: position.y },
             { rotate },
           ],
-        },
-      ]}
-    >
-      <View style={[styles.aux, styles.card1]} />
-      <View style={[styles.aux, styles.card2]} />
-
-      <View style={[styles.aux, styles.card3]}>
+          },]
+        }>
         <Image
           source={require("../../assets/images/logo.png")}
           resizeMode="contain"
+          height={160}
+          width={160}
         />
-        <Typography font="option" style={styles.text}>
+        <Typography font="text" style={styles.text}>
           {label}
         </Typography>
-      </View>
-    </Animated.View>
+      </Animated.View>
+    </View>
   );
 }

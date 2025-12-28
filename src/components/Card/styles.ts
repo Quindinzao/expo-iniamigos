@@ -3,14 +3,14 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   wrapper: {
     width: 332,
-    height: 466,
+    height: 412,
     marginBottom: 16,
     position: "relative",
   },
 
   aux: {
     width: 318,
-    height: 454,
+    height: 400,
     alignItems: "center",
     justifyContent: "flex-start",
     padding: 20,
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 
   text: {
     width: "100%",
+    textAlign: "center",
   },
 });
 

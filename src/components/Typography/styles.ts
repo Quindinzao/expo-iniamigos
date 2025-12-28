@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     lineHeight: 20,
   },
   text: {
-    fontSize: 18,
+    fontSize: 22,
     fontFamily: fonts.nunitoBold,
   },
   button: {

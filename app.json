@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "IniAmigos",
-    "slug": "IniAmigos",
+    "slug": "iniamigos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.joao-victor-fernandes.IniAmigos"
+      "bundleIdentifier": "com.quindinzao.iniamigos"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,7 +23,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.joao_victor_fernandes.IniAmigos"
+      "package": "com.quindinzao.iniamigos"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
@@ -33,6 +33,11 @@
     ],
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2c217151-1995-4903-a587-f40ee80f0821"
+      }
+    }
   }
 }

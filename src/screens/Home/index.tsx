@@ -5,11 +5,12 @@ import styles from "./styles";
 import CardOption from "../../components/CardOption";
 import Typography from "../../components/Typography";
 import { modes } from "../../constants/modes";
+import { GameModeKey } from "../../constants";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
 export default function HomeScreen({ navigation }: Props) {
-  function goToGame(mode: string) {
+  function goToGame(mode: GameModeKey) {
     navigation.navigate("Game", { mode });
   }
 
@@ -28,7 +29,7 @@ export default function HomeScreen({ navigation }: Props) {
             label={mode.label}
             icon={mode.icon}
             value={mode.value}
-            onPress={() => goToGame(mode.value)}
+            onPress={() => goToGame(mode.value as GameModeKey)}
           />
         ))}
       </View>

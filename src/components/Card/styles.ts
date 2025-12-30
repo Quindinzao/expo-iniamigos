@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: "center",
   },
+
+  category: {
+    marginBottom: 8,
+  },
 });
 
 export default styles;

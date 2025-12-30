@@ -18,5 +18,9 @@ export const styles = StyleSheet.create({
   button: {
     fontSize: 28,
     fontFamily: fonts.nunitoSemiBold,
+  },
+  caption: {
+    fontSize: 16,
+    fontFamily: fonts.nunitoBold,
   }
 });

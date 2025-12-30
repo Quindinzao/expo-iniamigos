@@ -9,10 +9,11 @@ const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.25;
 interface CardProps {
   label: string;
   value: string;
+  category?: string;
   onSwipe: () => void;
 }
 
-export default function Card({ label, value, onSwipe }: CardProps) {
+export default function Card({ label, value, onSwipe, category }: CardProps) {
   const position = useRef(new Animated.ValueXY()).current;
 
   const panResponder = useRef(
@@ -78,6 +79,7 @@ export default function Card({ label, value, onSwipe }: CardProps) {
           height={160}
           width={160}
         />
+        {category && <Typography style={styles.category} font="caption">Categoria: {category}</Typography>}
         <Typography font="text" style={styles.text}>
           {label}
         </Typography>

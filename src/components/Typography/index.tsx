@@ -2,7 +2,7 @@ import { Text, TextProps } from "react-native";
 import { styles } from "./styles";
 
 type TypographyProps = TextProps & {
-  font: "title" | "option" | "text" | "button";
+  font: "title" | "option" | "text" | "button" | "caption";
 };
 
 export default function Typography({

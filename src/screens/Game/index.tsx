@@ -14,9 +14,12 @@ export default function GameScreen({ route }: Props) {
 
   const cards = gameModes[mode];
 
-  const [currentCard, setCurrentCard] = useState<string>("");
+  const [currentCard, setCurrentCard] = useState<{category?: string, text: string}>({
+    text: "",
+    category: ""
+  });
 
-  function getRandomCard(list: string[]) {
+  function getRandomCard(list: {category?: string, text: string}[]) {
     const index = Math.floor(Math.random() * list.length);
     return list[index];
   }
@@ -38,8 +41,9 @@ export default function GameScreen({ route }: Props) {
       </Typography>
 
       <Card
-        label={currentCard}
-        value={currentCard}
+        category={currentCard?.category}
+        label={currentCard.text}
+        value={currentCard.text}
         onSwipe={handleSwipe}
       />
     </View>

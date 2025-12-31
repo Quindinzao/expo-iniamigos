@@ -7,32 +7,37 @@ import Typography from "../../components/Typography";
 import { styles } from "./styles";
 import { useEffect, useState } from "react";
 
+interface GameCard {
+  text: string;
+  category?: string;
+}
+
 type Props = NativeStackScreenProps<RootStackParamList, "Game">;
 
 export default function GameScreen({ route }: Props) {
   const { mode } = route.params;
-
   const cards = gameModes[mode];
 
-  const [currentCard, setCurrentCard] = useState<{category?: string, text: string}>({
-    text: "",
-    category: ""
-  });
-
-  function getRandomCard(list: {category?: string, text: string}[]) {
-    const index = Math.floor(Math.random() * list.length);
-    return list[index];
+  function getRandomCard(list: GameCard[]) {
+    return list[Math.floor(Math.random() * list.length)];
   }
 
+  const [currentCard, setCurrentCard] = useState<GameCard | null>(null);
+  const [nextCard, setNextCard] = useState<GameCard | null>(null);
+
   function handleSwipe() {
-    setCurrentCard(getRandomCard(cards));
+    setCurrentCard(nextCard);
+    setNextCard(() => getRandomCard(cards));
   }
 
   useEffect(() => {
-    setCurrentCard(getRandomCard(cards));
+    const first = getRandomCard(cards);
+    const second = getRandomCard(cards);
+  
+    setCurrentCard(first);
+    setNextCard(second);
   }, [mode]);
 
-  if (!currentCard) return null;
 
   return (
     <View style={styles.container}>
@@ -40,12 +45,14 @@ export default function GameScreen({ route }: Props) {
         INIAMIGOS
       </Typography>
 
-      <Card
-        category={currentCard?.category}
-        label={currentCard.text}
-        value={currentCard.text}
-        onSwipe={handleSwipe}
-      />
+      {currentCard && nextCard && (
+        <Card
+          key={currentCard.text}
+          currentCard={currentCard}
+          nextCard={nextCard}
+          onSwipe={handleSwipe}
+        />
+      )}
     </View>
   );
 }

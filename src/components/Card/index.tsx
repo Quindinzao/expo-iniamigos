@@ -6,14 +6,18 @@ import { useRef } from "react";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.25;
 
-interface CardProps {
-  label: string;
-  value: string;
+interface GameCard {
+  text: string;
   category?: string;
+}
+
+interface CardProps {
+  currentCard: GameCard;
+  nextCard: GameCard;
   onSwipe: () => void;
 }
 
-export default function Card({ label, value, onSwipe, category }: CardProps) {
+export default function Card({ currentCard, nextCard, onSwipe }: CardProps) {
   const position = useRef(new Animated.ValueXY()).current;
 
   const panResponder = useRef(
@@ -31,9 +35,9 @@ export default function Card({ label, value, onSwipe, category }: CardProps) {
           const direction = gesture.dx > 0 ? 1 : -1;
 
           Animated.timing(position, {
-            toValue: {
-              x: direction * SCREEN_WIDTH,
-              y: gesture.dy,
+            toValue: { 
+              x: direction * SCREEN_WIDTH, 
+              y: gesture.dy
             },
             duration: 200,
             useNativeDriver: false,
@@ -59,29 +63,52 @@ export default function Card({ label, value, onSwipe, category }: CardProps) {
   return (
     <View style={styles.wrapper}>
       <View style={[styles.aux, styles.card1]} />
-      <View style={[styles.aux, styles.card2]} />
-
-      <Animated.View
-        {...panResponder.panHandlers}
-        style={[
-          styles.aux, 
-          styles.card3, {
-          transform: [
-            { translateX: position.x },
-            { translateY: position.y },
-            { rotate },
-          ],
-          },]
-        }>
+      <View style={[styles.aux, styles.card2]}>
         <Image
           source={require("../../assets/images/logo.png")}
           resizeMode="contain"
           height={160}
           width={160}
         />
-        {category && <Typography style={styles.category} font="caption">Categoria: {category}</Typography>}
+        {nextCard.category && (
+          <Typography style={styles.category} font="caption">
+            Categoria: {nextCard.category}
+          </Typography>
+        )}
         <Typography font="text" style={styles.text}>
-          {label}
+          {nextCard.text}
+        </Typography>
+      </View>
+
+      <Animated.View
+        {...panResponder.panHandlers}
+        style={[
+          styles.aux,
+          styles.card3,
+          {
+            transform: [
+              { translateX: position.x },
+              { translateY: position.y },
+              { rotate },
+            ],
+          },
+        ]}
+      >
+        <Image
+          source={require("../../assets/images/logo.png")}
+          resizeMode="contain"
+          height={160}
+          width={160}
+        />
+
+        {currentCard.category && (
+          <Typography style={styles.category} font="caption">
+            Categoria: {currentCard.category}
+          </Typography>
+        )}
+
+        <Typography font="text" style={styles.text}>
+          {currentCard.text}
         </Typography>
       </Animated.View>
     </View>

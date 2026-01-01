@@ -65,10 +65,9 @@ export default function Card({ currentCard, nextCard, onSwipe }: CardProps) {
       <View style={[styles.aux, styles.card1]} />
       <View style={[styles.aux, styles.card2]}>
         <Image
-          source={require("../../assets/images/logo.png")}
+          source={require("../../assets/images/icon.png")}
           resizeMode="contain"
-          height={160}
-          width={160}
+          style={{ width: 180, height: 180 }}
         />
         {nextCard.category && (
           <Typography style={styles.category} font="caption">
@@ -95,10 +94,9 @@ export default function Card({ currentCard, nextCard, onSwipe }: CardProps) {
         ]}
       >
         <Image
-          source={require("../../assets/images/logo.png")}
+          source={require("../../assets/images/icon.png")}
           resizeMode="contain"
-          height={160}
-          width={160}
+          style={{ width: 180, height: 180 }}
         />
 
         {currentCard.category && (

@@ -12,4 +12,15 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 12,
   },
+  backButton: {
+    position: "absolute",
+    top: 40,
+    left: 20,
+    padding: 10,
+    zIndex: 1,
+  },
+  backButtonText: {
+    fontSize: 36,
+    transform: [{ rotate: "180deg" }],
+  },
 });
